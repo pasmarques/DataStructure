@@ -1,5 +1,7 @@
 package Tree.lib;
 
+import Queue.lib.Queue;
+
 public class Tree<T extends Comparable<T>> {
   private Node<T> root;
 
@@ -13,6 +15,24 @@ public class Tree<T extends Comparable<T>> {
 
   public Node<T> getRoot() {
     return root;
+  }
+  public Node<T> insertRight(Node<T> currentNode, T value){
+    if(currentNode == null) return new Node<T>(value);
+      if(currentNode.getRight() == null)
+        currentNode.setRight(new Node<T>(value));
+      else
+        return insertRight(currentNode.getRight(), value);
+
+    return currentNode;
+  }
+  public Node<T> insertLeft(Node<T> currentNode, T value){
+    if(currentNode == null) return new Node<T>(value);
+      if(currentNode.getLeft() == null)
+        currentNode.setLeft(new Node<T>(value));
+      else
+        return insertLeft(currentNode.getLeft(), value);
+        
+    return currentNode;
   }
 
   public void insertBT(Node<T> currentNode, T value) {
@@ -165,10 +185,13 @@ public class Tree<T extends Comparable<T>> {
   }
   private boolean isMaxHeap(Node<T> currentNode, int numberOfNodes, int index){
 
+    if(currentNode==null){
+      return true;
+    }
     if(index>=numberOfNodes){//garante que a arvore esteja completa
       return false;
     }
-  
+    
     if(currentNode.getLeft()!=null&&currentNode.getKey().compareTo(currentNode.getLeft().getKey())==-1||currentNode.getRight()!=null&&currentNode.getKey().compareTo(currentNode.getRight().getKey())==-1){
       return false;
     }
@@ -186,10 +209,7 @@ public class Tree<T extends Comparable<T>> {
     return isMinHeap(currentNode.getLeft(), numberOfNodes, index*2+1)&& isMinHeap(currentNode.getRight(), numberOfNodes, index*2+2);
   }
 
-  public int isHeap(Node <T> currentNode){
-	  if(currentNode==null){
-		  return 1;
-	  }
+  private int isHeap(Node <T> currentNode){
 
     int numberOfNodes=size(currentNode);
     int index=0;
@@ -202,4 +222,8 @@ public class Tree<T extends Comparable<T>> {
     return 0;//não é heap
   }
 
+  public int isHeap(){
+    return isHeap(this.root);
+  }
+ 
 }
