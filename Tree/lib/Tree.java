@@ -1,7 +1,4 @@
 package Tree.lib;
-
-import Queue.lib.Queue;
-
 public class Tree<T extends Comparable<T>> {
   private Node<T> root;
 

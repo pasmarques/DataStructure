@@ -1,3 +1,5 @@
+package OrdinationsAlgs;
+
 public class SelectionSort {
   public static void main(String[] args) {
     Person[] list = new Person[5];
@@ -7,40 +9,32 @@ public class SelectionSort {
     list[3] = new Person("anna", "202121120", 9.5f);
     list[4] = new Person("ana", "202121120", 9.5f);
 
+    String[] arrayOfStrings = { "Pedro", "Vitor", "Mariana", "Flavia", "Luiz" };
+
     System.out.println("Original Array: ");
-    printArray(list);
+    System.out.println(java.util.Arrays.toString(list));
 
-    selectionSort(list);
-    System.out.println("\nSelection descending sort:");
-    printArray(list);
-
-    Integer[] list1 = {34, 17, 23, 35, 45, 9, 1};
-    System.out.println("Original Array: ");
-    printArray(list1);
-
-    selectionSort(list1);
+    selectionSort(arrayOfStrings);
     System.out.println("\nSelection sort:");
-    printArray(list1);
+    System.out.println(java.util.Arrays.toString(list));
+  
   }
 
-  // selection sort
   public static <T extends Comparable<T>> void selectionSort(T[] array) {
     int size = array.length;
     for (int index = 0; index < size - 1; index++) {
       int smallerIndex = index;
-      for (int i = 0; i < size; i++) {
-        if (array[i].compareTo(array[smallerIndex]) == -1) {
+      for (int i= index+1; i < size; i++) {
+        if (array[i].compareTo(array[smallerIndex]) == 1) {
           smallerIndex = i;
         }
       }
-      if (array[index].compareTo(array[smallerIndex]) == -1) {
-        T aux = array[smallerIndex];
-        array[smallerIndex] = array[index];
-        array[index] = aux;
-      }
+      T aux = array[smallerIndex];
+      array[smallerIndex] = array[index];
+      array[index] = aux;
     }
   }
-
+  
   public static <T> void printArray(T[] array) {
     for (int i = 0; i < array.length; i++) {
       System.out.print(array[i] + " ");

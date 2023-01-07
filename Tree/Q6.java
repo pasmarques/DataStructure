@@ -1,5 +1,4 @@
 package Tree;
-
 import Tree.lib.Tree;
 
 public class Q6 {
