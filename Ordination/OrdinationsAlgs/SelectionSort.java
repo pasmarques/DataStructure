@@ -17,7 +17,6 @@ public class SelectionSort {
     System.out.println(java.util.Arrays.toString(list));
   
   }
-
   public static <T extends Comparable<T>> void selectionSort(T[] array) {
     int size = array.length;
     for (int index = 0; index < size - 1; index++) {
