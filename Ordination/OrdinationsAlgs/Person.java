@@ -6,7 +6,7 @@ public class Person implements Comparable<Person> {
   private float pontuation;
 
   public Person(String name, String registration, Float pontuation) {
-    if (validateName(name) && validatePontuation(pontuation) && validatere(registration)) {
+    if (validateName(name) && validatePontuation(pontuation) && validateRegister(registration)) {
       this.name = name;
       this.registration = registration;
       this.pontuation = pontuation;
@@ -36,7 +36,7 @@ public class Person implements Comparable<Person> {
     return (pontuation >= 0);
   }
 
-  private boolean validatere(String registration) {
+  private boolean validateRegister(String registration) {
     final int sizeformat = 9;// #########
     return (registration.length() == sizeformat);
   }

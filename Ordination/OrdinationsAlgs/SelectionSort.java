@@ -9,13 +9,11 @@ public class SelectionSort {
     list[3] = new Person("anna", "202121120", 9.5f);
     list[4] = new Person("ana", "202121120", 9.5f);
 
-    String[] arrayOfStrings = { "Pedro", "Vitor", "Mariana", "Flavia", "Luiz" };
-
     System.out.println("Original Array: ");
     System.out.println(java.util.Arrays.toString(list));
-
-    selectionSort(arrayOfStrings);
+   
     System.out.println("\nSelection sort:");
+    selectionSort(list);
     System.out.println(java.util.Arrays.toString(list));
   
   }
@@ -25,7 +23,7 @@ public class SelectionSort {
     for (int index = 0; index < size - 1; index++) {
       int smallerIndex = index;
       for (int i= index+1; i < size; i++) {
-        if (array[i].compareTo(array[smallerIndex]) == 1) {
+        if (array[i].compareTo(array[smallerIndex])==1) {
           smallerIndex = i;
         }
       }
@@ -34,7 +32,6 @@ public class SelectionSort {
       array[index] = aux;
     }
   }
-  
   public static <T> void printArray(T[] array) {
     for (int i = 0; i < array.length; i++) {
       System.out.print(array[i] + " ");
